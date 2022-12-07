@@ -16,7 +16,7 @@ question_router = APIRouter(
 
 @question_router.post("/create")
 def create_a_new_question(request: QuestionSchema, db: Session = Depends(get_db), user: str = Depends(authenticate)) -> dict:
-    return questionControllers.create_quesiton(request, db, user)
+    return questionControllers.create_question(request, db, user)
 
 
 @question_router.get("/", response_model=List[QuestionShow])

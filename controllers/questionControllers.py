@@ -3,7 +3,7 @@ from models.questionModels import QuestionSchema, Question, QuestionUpdate
 from fastapi import HTTPException, status
 
 
-def create_quesiton(request: QuestionSchema, db: Session, user:str):
+def create_question(request: QuestionSchema, db: Session, user:str):
     if (user != "admin@gmail.com"):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
