@@ -83,17 +83,17 @@ def analysis_attachment_style(request: AnswerSchema, db: Session, user: str):
     preoccupied = 0
     dismissing = 0
     for i in range(len(kumpulan_jawaban)):
-        if i in [1, 9, 12, 13, 16, 20]:
+        if i in [0, 8, 11, 12, 15, 19]:
             secure += kumpulan_jawaban[i]
-        elif i in [3, 7]:
+        elif i in [2, 6]:
             secure += 6 - kumpulan_jawaban[i]
-        elif i in [2, 4, 18, 21]:
+        elif i in [1, 3, 17, 20]:
             fearful += kumpulan_jawaban[i]
-        elif i in [6, 8, 10, 19, 22]:
+        elif i in [5, 7, 9, 18, 21]:
             preoccupied += kumpulan_jawaban[i]
-        elif i == 15:
+        elif i == 16:
             preoccupied += 6 - kumpulan_jawaban[i]
-        elif i in [5, 11, 14, 17]:
+        elif i in [4, 10, 13, 16]:
             dismissing += kumpulan_jawaban[i]
     secure /= 8
     fearful /= 4
