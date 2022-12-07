@@ -34,8 +34,7 @@ def get_user_list(db: Session = Depends(get_db), user: str = Depends(authenticat
 def get_a_user(id: int, db: Session = Depends(get_db), user: str = Depends(authenticate)) -> dict:
     return userControllers.get_user(id, db)
 
-'''
-@user_router.put("/get-health-condition")
-def analyze_my_health_condition(request: AnswerSchema, db: Session = Depends(get_db), user: str = Depends(authenticate)) -> dict:
-    return userControllers.analysis_health_condition(request, db, user)
-'''
+
+@user_router.put("/get-attachment-style")
+def analyze_my_attachment_style(request: AnswerSchema, db: Session = Depends(get_db), user: str = Depends(authenticate)) -> dict:
+    return userControllers.analysis_attachment_style(request, db, user)

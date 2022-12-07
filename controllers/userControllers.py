@@ -66,3 +66,59 @@ def get_user(id: int, db: Session):
         )
 
     return user
+
+
+def analysis_attachment_style(request: AnswerSchema, db: Session, user: str):
+    update_user = db.query(User).filter(User.email == user)
+
+    kumpulan_jawaban = [request.jawaban_pertanyaan_1, request.jawaban_pertanyaan_2, request.jawaban_pertanyaan_3, request.jawaban_pertanyaan_4,
+                        request.jawaban_pertanyaan_5, request.jawaban_pertanyaan_6, request.jawaban_pertanyaan_7, request.jawaban_pertanyaan_8, 
+                        request.jawaban_pertanyaan_9, request.jawaban_pertanyaan_10, request.jawaban_pertanyaan_11, request.jawaban_pertanyaan_12, 
+                        request.jawaban_pertanyaan_13, request.jawaban_pertanyaan_14, request.jawaban_pertanyaan_15, request.jawaban_pertanyaan_16, 
+                        request.jawaban_pertanyaan_17, request.jawaban_pertanyaan_18, request.jawaban_pertanyaan_19, request.jawaban_pertanyaan_20, 
+                        request.jawaban_pertanyaan_21, request.jawaban_pertanyaan_22]
+
+    secure = 0
+    fearful = 0
+    preoccupied = 0
+    dismissing = 0
+    for i in range(len(kumpulan_jawaban)):
+        if i in [1, 9, 12, 13, 16, 20]:
+            secure += kumpulan_jawaban[i]
+        elif i in [3, 7]:
+            secure += 6 - kumpulan_jawaban[i]
+        elif i in [2, 4, 18, 21]:
+            fearful += kumpulan_jawaban[i]
+        elif i in [6, 8, 10, 19, 22]:
+            preoccupied += kumpulan_jawaban[i]
+        elif i == 15:
+            preoccupied += 6 - kumpulan_jawaban[i]
+        elif i in [5, 11, 14, 17]:
+            dismissing += kumpulan_jawaban[i]
+    secure /= 8
+    fearful /= 4
+    preoccupied /= 6
+    dismissing /= 4
+
+    result = [secure, fearful, preoccupied, dismissing]
+    max = result[0]
+    idx = 0
+    for i in range(len(result)):
+        if result[i] > max:
+            max = result[i]
+            idx = i
+    
+    if idx == 0:
+        attachment = "secure"
+    elif idx == 1:
+        attachment = "fearful"
+    elif idx == 2:
+        attachment = "preoccupied"
+    else:
+        attachment = "dismissing"
+    
+    update_user.update({'attachment': attachment})
+    
+    db.commit()
+
+    return {"attachment": attachment}
