@@ -38,25 +38,25 @@ class UserLoveRequest(BaseModel):
             }
         }
 
-class UserLove(BaseModel):
-    email: EmailStr
-    nama: str
-    physical_touch: int
-    word_affirmation: int
-    gift: int
-    quality_time: int
-    act_of_service: int
+# class UserLove(BaseModel):
+#     email: EmailStr
+#     nama: str
+#     physical_touch: int
+#     word_affirmation: int
+#     gift: int
+#     quality_time: int
+#     act_of_service: int
 
-    class Config:
-        orm_mode = True
-        schema_extra = {
-            "example": {
-                "email": "sample@mail.com",
-                "nama": "Adit",
-                "physical_touch": 20,
-                "word_affirmation": 20,
-                "gift": 20,
-                "quality_time": 20,
-                "act_of_service": 20,
-            }
-        }
+#     class Config:
+#         orm_mode = True
+#         schema_extra = {
+#             "example": {
+#                 "email": "sample@mail.com",
+#                 "nama": "Adit",
+#                 "physical_touch": 20,
+#                 "word_affirmation": 20,
+#                 "gift": 20,
+#                 "quality_time": 20,
+#                 "act_of_service": 20,
+#             }
+#         }
