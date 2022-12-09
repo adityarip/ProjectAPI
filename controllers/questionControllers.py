@@ -4,7 +4,7 @@ from fastapi import HTTPException, status
 
 
 def create_question(request: QuestionSchema, db: Session, user:str):
-    if (user != "admin@gmail.com"):
+    if (user != "admin@mail.com"):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Fitur ini hanya dapat digunakan oleh admin."
@@ -45,7 +45,7 @@ def get_question(id: int, db: Session):
 
 
 def update_question(id: int, request: QuestionUpdate, db: Session, user:str):
-    if (user != "admin@gmail.com"):
+    if (user != "admin@mail.com"):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Fitur ini hanya dapat digunakan oleh admin."
@@ -68,7 +68,7 @@ def update_question(id: int, request: QuestionUpdate, db: Session, user:str):
 
 
 def delete_question(id: int, db: Session, user:str):
-    if (user != "admin@gmail.com"):
+    if (user != "admin@mail.com"):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Fitur ini hanya dapat digunakan oleh admin."
