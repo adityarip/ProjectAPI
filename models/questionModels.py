@@ -13,8 +13,8 @@ class Question(Base):
     class Config:
         schema_extra = {
             "example": {
-                "pertanyaan": "Provided me with sufficient food and housing, and medical care when needed",
-                "pilihan": "(Very rarely) 1, 2, 3, 4, 5, 6, 7 (Very frequently)"
+                "pertanyaan": "I feel at ease in emotional relationships",
+                "pilihan": "(Disagree) 1, 2, 3, 4, 5(Agree)"
             }
         }
 
@@ -27,8 +27,8 @@ class QuestionSchema(BaseModel):
         orm_mode = True
         schema_extra = {
             "example": {
-                "pertanyaan": "Provided me with sufficient food and housing, and medical care when needed",
-                "pilihan": "(Very rarely) 1, 2, 3, 4, 5, 6, 7 (Very frequently)"
+                "pertanyaan": "I feel at ease in emotional relationships",
+                "pilihan": "1 (Strongly Disagree), 2 (Disagree), 3 (Neutral), 4 (Agree), 5 (Strongly Agree)"
             }
         }
 
@@ -43,8 +43,8 @@ class QuestionShow(BaseModel):
         schema_extra = {
             "example": {
                 "int": 1,
-                "pertanyaan": "Provided me with sufficient food and housing, and medical care when needed",
-                "pilihan": "(Very rarely) 1, 2, 3, 4, 5, 6, 7 (Very frequently)"
+                "pertanyaan": "I feel at ease in emotional relationships",
+                "pilihan": "1 (Strongly Disagree), 2 (Disagree), 3 (Neutral), 4 (Agree), 5 (Strongly Agree)"
             }
         }
 
@@ -56,6 +56,6 @@ class QuestionUpdate(BaseModel):
         orm_mode = True
         schema_extra = {
             "example": {
-                "pertanyaan": "Provided me with sufficient food and housing, and medical care when needed",
+                "pertanyaan": "I feel at ease in emotional relationships",
             }
         }

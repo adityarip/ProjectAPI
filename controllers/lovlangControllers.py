@@ -4,7 +4,7 @@ from models.userModels import User
 from fastapi import HTTPException, status
 import requests
 
-callback_url = "https://lovelangapi.politeground-4e0e77af.eastus.azurecontainerapps.io/"
+callback_url = "https://loveslangapi.politeground-4e0e77af.eastus.azurecontainerapps.io/"
 # callback_url = "https://apiadit.calmpond-d268450b.eastus.azurecontainerapps.io/"
 
 def get_love_attachment(request: UserLoveRequest, db: Session, user: str):
